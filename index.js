@@ -1,4 +1,5 @@
 const dialogflow = require('@google-cloud/dialogflow');
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const app = express()
@@ -58,4 +59,7 @@ app.post('/', async function (req, res) {
   }
 })
 
-app.listen(3003)
+const PORT = process.env.PORT || 3003
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
