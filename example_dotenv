@@ -1,0 +1,3 @@
+P_ID=project-id
+P_KEY=-----BEGIN PRIVATE KEY-----\nprivate-key\n-----END PRIVATE KEY-----\n
+C_EMAIL=service-account-email
