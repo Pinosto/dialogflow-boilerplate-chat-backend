@@ -7,11 +7,12 @@ const keys = require('./keys.js')
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
 
-app.get('/', function (req, res) {
+app.get('/api/dialogflow', function (req, res) {
   res.send('boilerchat')
 })
-app.post('/', async function (req, res) {
+app.post('/api/dialogflow', async function (req, res) {
 
   const projectId = keys.project_id;
   const sessionId = req.body.uuid;
@@ -56,6 +57,7 @@ app.post('/', async function (req, res) {
     res.json(result.fulfillmentText)
   } catch (e) {
     console.error(e)
+    res.json('I think dialogflow is down.')
   }
 })
 
