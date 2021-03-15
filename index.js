@@ -3,7 +3,6 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const keys = require('./keys.js')
 
 app.use(cors())
 app.use(express.json())
@@ -14,13 +13,13 @@ app.get('/api/dialogflow', function (req, res) {
 })
 app.post('/api/dialogflow', async function (req, res) {
 
-  const projectId = keys.project_id;
+  const projectId = process.env.P_ID;
   const sessionId = req.body.uuid;
   const query = req.body.text;
   const languageCode = 'en-US';
   const credentials = {
-    client_email: keys.client_email,
-    private_key: keys.private_key,
+    client_email: process.env.C_EMAIL,
+    private_key: process.env.P_KEY.replace(/\\n/g, '\n'),
   };
 
   // Create a new session
